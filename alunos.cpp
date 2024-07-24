@@ -1,11 +1,12 @@
-#include<string>
-#include<iostream>
+#include <string>
+#include <iostream>
 
 #include "aluno.hpp"
 
-int main(void){
-  Aluno* a1 = new Aluno();
-  Pessoa* p1 = new Aluno("Joao Pedro");
+int main(void)
+{
+  Aluno *a1 = new Aluno();
+  Pessoa *p1 = new Aluno("Joao Pedro");
 
   std::cout << *a1 << std::endl;
   std::cout << *p1 << std::endl;

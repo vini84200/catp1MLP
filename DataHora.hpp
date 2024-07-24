@@ -3,19 +3,19 @@
 #include <ctime>
 #include <ostream>
 
-class DataHora {
+class DataHora
+{
 
-    public:
-        DataHora();
-        DataHora(time_t);
+public:
+    DataHora();
+    DataHora(time_t);
 
-        tm *getTm() const;
+    tm *getTm() const;
 
-
-    private:
-        time_t time_;
+private:
+    time_t time_;
 };
 
-std::ostream& operator<<(std::ostream&, const DataHora&);
+std::ostream &operator<<(std::ostream &, const DataHora &);
 
 #endif

@@ -1,5 +1,6 @@
 #include"pessoa.hpp"
 #include "DataHora.hpp"
+#include <regex>
 
 std::string Pessoa::get_nome() const{
   // faz cópia raza (verificar se é necessário construir uma cópia)
@@ -16,7 +17,14 @@ Pessoa::GENERO Pessoa::get_genero() const{
 }
 
 void Pessoa::set_nome(const std::string nome){
-  this->nome = nome;
+  std::regex regex("(([A-Z])[a-z]+) (([A-Z])[a-z]+)");
+
+  if (std::regex_match(nome, regex)) {
+    this->nome = nome;
+  } else if (this->nome == "") {
+    this->nome = "INDEFINIDO";
+  }
+
 }
 
 void Pessoa::set_dt_nascimento(const DataHora dt_nascimento){

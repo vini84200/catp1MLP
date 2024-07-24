@@ -5,7 +5,7 @@
 
 int main(void){
   Aluno* a1 = new Aluno();
-  Pessoa* p1 = new Aluno();
+  Pessoa* p1 = new Aluno("Joao Pedro");
 
   std::cout << *a1 << std::endl;
   std::cout << *p1 << std::endl;

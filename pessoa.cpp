@@ -35,7 +35,8 @@ void Pessoa::set_nome(const std::string nome)
 
 void Pessoa::set_dt_nascimento(const DataHora dt_nascimento)
 {
-  this->dt_nascimento = dt_nascimento;
+  if (!dt_nascimento.isFuture())
+    this->dt_nascimento = dt_nascimento;
 }
 
 void Pessoa::set_genero(const GENERO genero)

@@ -15,6 +15,11 @@ tm *DataHora::getTm() const
     return localtime(&time_);
 }
 
+bool DataHora::isFuture() const
+{
+    return time_ > time(0);
+}
+
 std::ostream &operator<<(std::ostream &os, const DataHora &time)
 {
     tm *ltm = time.getTm();

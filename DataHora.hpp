@@ -12,6 +12,8 @@ public:
 
     tm *getTm() const;
 
+    bool isFuture() const;
+
 private:
     time_t time_;
 };

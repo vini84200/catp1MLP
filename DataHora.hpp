@@ -13,6 +13,9 @@ public:
     tm *getTm() const;
 
     bool isFuture() const;
+    bool isBefore(const DataHora &);
+    bool isAfter(const DataHora &);
+    bool isBetween(const DataHora &, const DataHora &);
 
 private:
     time_t time_;

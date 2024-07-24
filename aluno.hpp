@@ -15,14 +15,17 @@ public:
     DOUTORADO
   };
 
-  Aluno(std::string = "INDEFINIDO", time_t = time(0), GENERO = Pessoa::INDEFINIDO, NIVEL = INDEFINIDO, std::string = "INDEFINIDO");
+  Aluno(std::string = "INDEFINIDO", time_t = time(0), GENERO = Pessoa::INDEFINIDO, NIVEL = INDEFINIDO, std::string = "INDEFINIDO", DataHora dt_matricula= DataHora());
 
   void set_nivel(NIVEL);
   void set_matricula(std::string);
+  void set_dt_matricula(DataHora);
+
 
 private:
   NIVEL nivel;
   std::string matricula;
+  DataHora dt_matricula;
 };
 
 // sobrecarga do operator<<

@@ -20,6 +20,21 @@ bool DataHora::isFuture() const
     return time_ > time(0);
 }
 
+bool DataHora::isBefore(const DataHora &other)
+{
+    return time_ < other.time_;
+}
+
+bool DataHora::isAfter(const DataHora &other)
+{
+    return time_ > other.time_;
+}
+
+bool DataHora::isBetween(const DataHora &start, const DataHora &end)
+{
+    return !isBefore(start) && !isAfter(end);
+}
+
 std::ostream &operator<<(std::ostream &os, const DataHora &time)
 {
     tm *ltm = time.getTm();

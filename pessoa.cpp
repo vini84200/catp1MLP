@@ -27,9 +27,9 @@ void Pessoa::set_nome(const std::string nome)
   {
     this->nome = nome;
   }
-  else if (this->nome == "")
+  else 
   {
-    this->nome = "INDEFINIDO";
+    throw std::invalid_argument("Nome inválido");
   }
 }
 
@@ -37,6 +37,9 @@ void Pessoa::set_dt_nascimento(const DataHora dt_nascimento)
 {
   if (!dt_nascimento.isFuture())
     this->dt_nascimento = dt_nascimento;
+  else {
+    throw std::invalid_argument("Data de nascimento futura");
+  }
 }
 
 void Pessoa::set_genero(const GENERO genero)

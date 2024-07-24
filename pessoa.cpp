@@ -1,11 +1,12 @@
 #include"pessoa.hpp"
+#include "DataHora.hpp"
 
 std::string Pessoa::get_nome() const{
   // faz cópia raza (verificar se é necessário construir uma cópia)
   return this->nome;
 }
 
-time_t Pessoa::get_dt_nascimento() const{
+DataHora Pessoa::get_dt_nascimento() const{
   // em princípio não tem problema em fazer cópia rasa (pois é um struct com literais)
   return this->dt_nascimento;
 }
@@ -18,7 +19,7 @@ void Pessoa::set_nome(const std::string nome){
   this->nome = nome;
 }
 
-void Pessoa::set_dt_nascimento(const time_t dt_nascimento){
+void Pessoa::set_dt_nascimento(const DataHora dt_nascimento){
   this->dt_nascimento = dt_nascimento;
 }
 
@@ -26,7 +27,7 @@ void Pessoa::set_genero(const GENERO genero){
   this->genero = genero;
 }
 
-Pessoa::Pessoa(std::string nome, time_t dt_nascimento, GENERO genero){
+Pessoa::Pessoa(std::string nome, DataHora dt_nascimento, GENERO genero){
   this->set_nome(nome);
   this->set_dt_nascimento(dt_nascimento);
   this->set_genero(genero);
@@ -68,12 +69,11 @@ std::ostream& operator<<(std::ostream& os, const Pessoa::GENERO g){
 
 // sobrecarga do operator<< para aceitar Pessoas
 std::ostream& operator<<(std::ostream& os, const Pessoa& p){
-  time_t data = p.get_dt_nascimento();
-  tm *ltm = localtime(&data);
+  DataHora data = p.get_dt_nascimento();
 
   os << "Pessoa (Nome: " << p.get_nome();   // temos que usar os getters (pois os atributos agora são privados)
   os << ", Genero: " << p.get_genero() ;
-  os << ", Nascimento: " << ltm->tm_mday << "/" << 1+ltm->tm_mon << "/" << 1900+ltm->tm_year;
+  os << ", Nascimento: " << data;
   os << ")";
   return os;
 }

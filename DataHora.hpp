@@ -1,4 +1,4 @@
-#include <time>
+#include <ctime>
 
 class DataHora {
 
@@ -7,4 +7,4 @@ class DataHora {
 
     private:
         time_t time;
-}
+};

@@ -8,6 +8,7 @@ add_library(
     aluno.cpp 
     DataHora.cpp 
     pessoa.cpp 
+    funcionario.cpp
 )
 
 add_executable(
@@ -17,4 +18,13 @@ add_executable(
 
 target_link_libraries(
     Alunos PRIVATE TheLib
+)
+
+add_executable(
+    ListaPessoas
+    lista_pessoas.cpp
+)
+
+target_link_libraries(
+    ListaPessoas PRIVATE TheLib
 )

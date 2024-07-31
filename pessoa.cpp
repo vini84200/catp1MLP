@@ -27,7 +27,7 @@ void Pessoa::set_nome(const std::string nome)
   {
     this->nome = nome;
   }
-  else 
+  else if (nome != "INDEFINIDO")
   {
     throw std::invalid_argument("Nome inválido");
   }
@@ -104,14 +104,19 @@ std::ostream &operator<<(std::ostream &os, const Pessoa::GENERO g)
   return os;
 }
 
-// sobrecarga do operator<< para aceitar Pessoas
-std::ostream &operator<<(std::ostream &os, const Pessoa &p)
+std::ostream &Pessoa::print(std::ostream &os) const 
 {
-  DataHora data = p.get_dt_nascimento();
+  DataHora data = get_dt_nascimento();
 
-  os << "Pessoa (Nome: " << p.get_nome(); // temos que usar os getters (pois os atributos agora são privados)
-  os << ", Genero: " << p.get_genero();
+  os << "Pessoa (Nome: " << get_nome(); // temos que usar os getters (pois os atributos agora são privados)
+  os << ", Genero: " << get_genero();
   os << ", Nascimento: " << data;
   os << ")";
   return os;
+}
+
+// sobrecarga do operator<< para aceitar Pessoas
+std::ostream &operator<<(std::ostream &os, const Pessoa &p)
+{
+  return p.print(os);
 }

@@ -1,3 +1,5 @@
+#ifndef PESSOA_HPP
+#define PESSOA_HPP
 #include <string>
 #include <iostream>
 #include "DataHora.hpp"
@@ -30,6 +32,8 @@ public:
    void set_dt_nascimento(const DataHora);
    void set_genero(const GENERO);
 
+   virtual std::ostream &print(std::ostream &) const;
+
 protected:
    std::string nome;
    DataHora dt_nascimento;
@@ -39,3 +43,5 @@ protected:
 // sobrecarga do operator<< para atuar com Pessoa::Genero
 std::ostream &operator<<(std::ostream &, const Pessoa::GENERO);
 std::ostream &operator<<(std::ostream &, const Pessoa &);
+
+#endif

@@ -42,8 +42,16 @@ void Aluno::set_dt_matricula(DataHora _dt_matricula)
 // sobrecarga do operator<< para aceitar Pessoas
 std::ostream &operator<<(std::ostream &os, const Aluno &a)
 {
-  os << "Aluno (";
-  os << (Pessoa &)a;
-  os << ")";
+  return a.print(os);
+}
+
+std::ostream &Aluno::print(std::ostream &os) const
+{
+  os << "Nome: " << this->nome << std::endl;
+  os << "Data de nascimento: " << this->dt_nascimento << std::endl;
+  os << "Gênero: " << this->genero << std::endl;
+  os << "Nível: " << this->nivel << std::endl;
+  os << "Matrícula: " << this->matricula << std::endl;
+  os << "Data de matrícula: " << this->dt_matricula << std::endl;
   return os;
 }

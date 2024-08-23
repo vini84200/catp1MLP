@@ -1,5 +1,6 @@
 add_library(
     PessoasModels
+        STATIC
     aluno.cpp
     DataHora.cpp
     pessoa.cpp

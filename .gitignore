@@ -1,1 +1,4 @@
 build
+/.
+/cmake-build-debug-system/
+/cmake-build-debug/

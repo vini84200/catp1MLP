@@ -17,7 +17,11 @@ public:
     DOUTORADO
   };
 
-  Aluno(std::string = "INDEFINIDO", time_t = time(0), GENERO = Pessoa::INDEFINIDO, NIVEL = INDEFINIDO, std::string = "00000000", DataHora dt_matricula= DataHora());
+  static std::string nivel_str(NIVEL n);
+  static NIVEL nivel_enum(const std::string &s);
+
+
+  Aluno(std::string = "INDEFINIDO", DataHora nasc= DataHora(), GENERO = Pessoa::INDEFINIDO, NIVEL = INDEFINIDO, std::string = "00000000", DataHora dt_matricula= DataHora());
 
   void set_nivel(NIVEL);
   void set_matricula(std::string);

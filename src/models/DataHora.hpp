@@ -10,6 +10,8 @@ public:
     DataHora();
     DataHora(time_t);
 
+    DataHora(unsigned int dia, unsigned int mes, unsigned int ano);
+
     tm *getTm() const;
 
     bool isFuture() const;

@@ -3,7 +3,7 @@
 #include "aluno.hpp"
 #include <regex>
 
-Aluno::Aluno(std::string nome, time_t dt_nascimento, GENERO genero, NIVEL nivel, std::string matricula, DataHora dt_matricula)
+Aluno::Aluno(std::string nome, DataHora dt_nascimento, GENERO genero, NIVEL nivel, std::string matricula, DataHora dt_matricula)
     : Pessoa(nome, dt_nascimento, genero)
 {
   this->set_nivel(nivel);
@@ -54,4 +54,23 @@ std::ostream &Aluno::print(std::ostream &os) const
   os << "Matrícula: " << this->matricula << std::endl;
   os << "Data de matrícula: " << this->dt_matricula << std::endl;
   return os;
+}
+
+std::string Aluno::nivel_str(Aluno::NIVEL n) {
+    switch (n) {
+        case INDEFINIDO: return "INDEFINIDO";
+        case GRADUACAO: return "GRADUACAO";
+        case ESPECIALIZACAO: return "ESPECIALIZACAO";
+        case MESTRADO: return "MESTRADO";
+        case DOUTORADO: return "DOUTORADO";
+    }
+}
+
+Aluno::NIVEL Aluno::nivel_enum(const std::string &s) {
+    if (s == "INDEFINIDO") return INDEFINIDO;
+    if (s == "GRADUACAO") return GRADUACAO;
+    if (s == "ESPECIALIZACAO") return ESPECIALIZACAO;
+    if (s == "MESTRADO") return MESTRADO;
+    if (s == "DOUTORADO") return DOUTORADO;
+    throw std::invalid_argument("Nível inválido");
 }

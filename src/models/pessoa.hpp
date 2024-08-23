@@ -2,6 +2,8 @@
 #define PESSOA_HPP
 #include <string>
 #include <iostream>
+#include <map>
+#include "map_init.h"
 #include "DataHora.hpp"
 
 class Pessoa
@@ -15,6 +17,27 @@ public:
       NAO_BINARIO,
       TRANSGENERO
    };
+    static std::map<GENERO, std::string> get_genero_map() {
+        return {
+            {INDEFINIDO, "INDEFINIDO"},
+            {HOMEM_CIS, "HOMEM_CIS"},
+            {MULHER_CIS, "MULHER_CIS"},
+            {NAO_BINARIO, "NAO_BINARIO"},
+            {TRANSGENERO, "TRANSGENERO"}
+        };
+    }
+    static std::map<std::string, GENERO> get_inv_genero_map() {
+        return {
+            {"INDEFINIDO", INDEFINIDO},
+            {"HOMEM_CIS", HOMEM_CIS},
+            {"MULHER_CIS", MULHER_CIS},
+            {"NAO_BINARIO", NAO_BINARIO},
+            {"TRANSGENERO", TRANSGENERO}
+
+        };
+    }
+    static const std::string genero_str(GENERO g) { return get_genero_map()[g]; }
+    static const GENERO genero_enum(const std::string &s) { return get_inv_genero_map()[s]; }
 
    Pessoa(std::string = "INDEFINIDO", DataHora = DataHora(), GENERO = INDEFINIDO); // construtor com valores-default
    Pessoa(const Pessoa &);                                                         // construtor de cópia
@@ -43,5 +66,6 @@ protected:
 // sobrecarga do operator<< para atuar com Pessoa::Genero
 std::ostream &operator<<(std::ostream &, const Pessoa::GENERO);
 std::ostream &operator<<(std::ostream &, const Pessoa &);
+
 
 #endif

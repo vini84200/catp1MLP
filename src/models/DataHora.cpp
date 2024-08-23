@@ -35,6 +35,18 @@ bool DataHora::isBetween(const DataHora &start, const DataHora &end)
     return !isBefore(start) && !isAfter(end);
 }
 
+DataHora::DataHora(unsigned int dia, unsigned int mes, unsigned int ano) {
+    tm ltm = {};
+    ltm.tm_mday = dia;
+    ltm.tm_mon = mes - 1;
+    ltm.tm_year = ano - 1900;
+    ltm.tm_hour = 0;
+    ltm.tm_min = 0;
+    ltm.tm_sec = 0;
+    ltm.tm_isdst = -1;
+    time_ = mktime(&ltm);
+}
+
 std::ostream &operator<<(std::ostream &os, const DataHora &time)
 {
     tm *ltm = time.getTm();
